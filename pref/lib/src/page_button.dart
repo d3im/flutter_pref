@@ -18,6 +18,7 @@ class PrefPageButton extends StatelessWidget {
     this.pageTitle,
     this.leading,
     this.trailing,
+    this.leadingAppBar,
   });
 
   final Widget? title;
@@ -26,6 +27,7 @@ class PrefPageButton extends StatelessWidget {
   final PrefPage page;
   final Widget? leading;
   final Widget? trailing;
+  final Widget? leadingAppBar;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class PrefPageButton extends StatelessWidget {
                   builder: (context) => Scaffold(
                     appBar: AppBar(
                       title: pageTitle ?? title,
+		      leading: leadingAppBar,
                     ),
                     body: page,
                   ),
