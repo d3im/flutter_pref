@@ -19,15 +19,17 @@ class PrefPageButton extends StatelessWidget {
     this.leading,
     this.trailing,
     this.leadingAppBar,
+    this.ownPage,
   });
 
   final Widget? title;
   final Widget? pageTitle;
   final Widget? subtitle;
-  final PrefPage page;
+  final PrefPage? page;
   final Widget? leading;
   final Widget? trailing;
   final Widget? leadingAppBar;
+  final Widget? ownPage;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +40,17 @@ class PrefPageButton extends StatelessWidget {
           ? null
           : () => Navigator.of(context).push<void>(
                 MaterialPageRoute(
-                  builder: (context) => Scaffold(
+                  builder: (context) => ownPage == null ? Scaffold(
                     appBar: AppBar(
                       title: pageTitle ?? title,
-		      leading: leadingAppBar,
+                      leading: leadingAppBar,
                     ),
                     body: page,
-                  ),
+                  ) : ownPage(
+                      title: pageTitle ?? title,
+                      leading: leadingAppBar,
+                      body: page,
+                      ),
                 ),
               ),
       title: title,
