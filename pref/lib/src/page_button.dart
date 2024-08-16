@@ -29,7 +29,7 @@ class PrefPageButton extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
   final Widget? leadingAppBar;
-  final Function()? ownPage;
+  final Widget? ownPage;
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +46,7 @@ class PrefPageButton extends StatelessWidget {
                       leading: leadingAppBar,
                     ),
                     body: page,
-                  ) : ownPage(
-                      title: pageTitle ?? title,
-                      leading: leadingAppBar,
-                      body: page,
-                      ),
+                  ) : ownPage,
                 ),
               ),
       title: title,
